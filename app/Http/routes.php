@@ -10,7 +10,25 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+//前台路由组
+Route::group(array(), function()
+{
+    Route::group(['namespace' => 'User'], function () {
+        Route::get('/', 'IndexController@index');
+        Route::delete('/articles/{id}', 'IndexController@del')->name('articles.destroy');
+    });
+});
 
-Route::get('/', function () {
-    return view('welcome');
+
+//后台路由组
+Route::group(['prefix' => 'Admin'], function()
+{
+    Route::group(['namespace' => 'Admin','as' => 'admin::'], function() {
+        Route::get('/', 'IndexController@test');
+    });
+});
+
+//API路由组
+Route::group(['prefix' => 'api', 'namespace' => 'Api'], function(){
+    Route::any('/', 'RouterController@index');  // API 入口
 });
