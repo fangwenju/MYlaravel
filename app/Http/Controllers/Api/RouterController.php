@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Services\ApiServer\Server;
 use App\Services\ApiServer\Error;
+use App\Services\Common as Common;
 
 /**
  * Api入口控制器
